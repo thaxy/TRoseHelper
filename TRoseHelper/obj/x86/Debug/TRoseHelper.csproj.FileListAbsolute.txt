@@ -1,0 +1,32 @@
+C:\Users\admin\AppData\Local\Temporary Projects\TRoseHelper\bin\Debug\TRoseHelper.exe
+C:\Users\admin\AppData\Local\Temporary Projects\TRoseHelper\bin\Debug\TRoseHelper.pdb
+C:\Users\admin\AppData\Local\Temporary Projects\TRoseHelper\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\admin\AppData\Local\Temporary Projects\TRoseHelper\obj\x86\Debug\MainWindow.baml
+C:\Users\admin\AppData\Local\Temporary Projects\TRoseHelper\obj\x86\Debug\MainWindow.g.cs
+C:\Users\admin\AppData\Local\Temporary Projects\TRoseHelper\obj\x86\Debug\App.g.cs
+C:\Users\admin\AppData\Local\Temporary Projects\TRoseHelper\obj\x86\Debug\TRoseHelper_MarkupCompile.cache
+C:\Users\admin\AppData\Local\Temporary Projects\TRoseHelper\obj\x86\Debug\TRoseHelper.g.resources
+C:\Users\admin\AppData\Local\Temporary Projects\TRoseHelper\obj\x86\Debug\TRoseHelper.Properties.Resources.resources
+C:\Users\admin\AppData\Local\Temporary Projects\TRoseHelper\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\admin\AppData\Local\Temporary Projects\TRoseHelper\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\admin\AppData\Local\Temporary Projects\TRoseHelper\obj\x86\Debug\TRoseHelper.exe
+C:\Users\admin\AppData\Local\Temporary Projects\TRoseHelper\obj\x86\Debug\TRoseHelper.pdb
+C:\Users\admin\AppData\Local\Temporary Projects\TRoseHelper\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Debug\TRoseHelper.exe
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Debug\TRoseHelper.pdb
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\bin\Debug\TRoseHelper.exe
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\bin\Debug\TRoseHelper.pdb
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Debug\App.g.cs
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Debug\TRoseHelper_MarkupCompile.cache
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Debug\TRoseHelper.g.resources
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Debug\TRoseHelper.Properties.Resources.resources
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Debug\Windows\MainWindow.baml
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Debug\Windows\MainWindow.g.cs
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Debug\Windows\About.baml
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Debug\Windows\Settings.baml
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Debug\Windows\About.g.cs
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Debug\Windows\Settings.g.cs
