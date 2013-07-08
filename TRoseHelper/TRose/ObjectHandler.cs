@@ -10,6 +10,10 @@ namespace TRoseHelper
         public static Player Player { get; set; }
         public static List<Creep> Creeps { get; set; }
 
+        /// <summary>
+        /// Update Player
+        /// </summary>
+        /// <returns></returns>
         public static Player UpdatePlayer()
         {
             Player player = new Player();
