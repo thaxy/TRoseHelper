@@ -16,9 +16,9 @@ namespace TRoseHelper
 
             player.Health = Convert.ToInt32(MemoryHandler.ReadMemory((IntPtr)0x007C6710, new[] { 0x904 }, typeof(int)));
             player.ActionId = Convert.ToInt32(MemoryHandler.ReadMemory((IntPtr)0x007C6710, new[] { 0x2e }, typeof(int)));
-            player.TargetId = Convert.ToInt32(MemoryHandler.ReadMemory((IntPtr)0x007A24EC, new int[] { 0x14 }, typeof(int)));
-            player.PositionX = Convert.ToSingle(MemoryHandler.ReadMemory((IntPtr)0x002822E8, new int[] { 0x9c, 0x180 }, typeof(float), "znzin.dll"));
-            player.PositionY = Convert.ToSingle(MemoryHandler.ReadMemory((IntPtr)0x002822E8, new int[] { 0x9c, 0x184 }, typeof(float), "znzin.dll"));
+            player.TargetId = Convert.ToInt32(MemoryHandler.ReadMemory((IntPtr)0x007A24EC, new[] { 0x14 }, typeof(int)));
+            player.PositionX = Convert.ToSingle(MemoryHandler.ReadMemory((IntPtr)0x002822E8, new[] { 0x9c, 0x180 }, typeof(float), "znzin.dll"));
+            player.PositionY = Convert.ToSingle(MemoryHandler.ReadMemory((IntPtr)0x002822E8, new[] { 0x9c, 0x184 }, typeof(float), "znzin.dll"));
 
             Player = player;
             return player;
