@@ -30,3 +30,4 @@ C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj
 C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Release\Windows\About.g.cs
 C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Release\Windows\MainWindow.g.cs
 C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\obj\x86\Release\Windows\Settings.g.cs
+C:\Users\admin\documents\visual studio 2010\Projects\TRoseHelper\TRoseHelper\bin\Release\TRoseHelper.exe.config
