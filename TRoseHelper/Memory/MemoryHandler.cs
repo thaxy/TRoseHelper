@@ -34,12 +34,12 @@ namespace TRoseHelper
         public static List<byte[]> ScanMemory(int search, int bytesToRead)
         {
             List<byte[]> results = new List<byte[]>();
-            foreach (MemoryPage memoryPage in UpdateMemoryPages())
+            foreach (MemoryPage memoryPage in ReadMemoryPages())
             {
-                foreach (int position in IndexOfSequence(memoryPage.ByteContent, BitConverter.GetBytes(search)))
+                foreach (int position in IndexOfSequence(memoryPage.Content, BitConverter.GetBytes(search)))
                 {
                     byte[] result = new byte[bytesToRead];
-                    Buffer.BlockCopy(memoryPage.ByteContent, position, result, 0, bytesToRead);
+                    Buffer.BlockCopy(memoryPage.Content, position, result, 0, bytesToRead);
                     results.Add(result);
                 }
             }
@@ -83,7 +83,7 @@ namespace TRoseHelper
             }
         }
 
-        private static List<MemoryPage> UpdateMemoryPages()
+        private static List<MemoryPage> ReadMemoryPages()
         {
             List<MemoryPage> memoryPages = new List<MemoryPage>();
 
@@ -99,7 +99,7 @@ namespace TRoseHelper
                     IntPtr baseAddress = m.BaseAddress;
                     uint to = (uint)m.BaseAddress + (uint)m.RegionSize;
                     byte[] content = ReadMemory(baseAddress, (uint)m.RegionSize);
-                    memoryPages.Add(new MemoryPage { From = baseAddress, To = to, Size = m.RegionSize, ByteContent = content });
+                    memoryPages.Add(new MemoryPage { From = baseAddress, To = to, Content = content });
                     total += (int)m.RegionSize;
                 }
                 startAddress += (uint)m.RegionSize;

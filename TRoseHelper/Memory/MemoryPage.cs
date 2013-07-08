@@ -9,7 +9,6 @@ namespace TRoseHelper
     {
         public IntPtr From { get; set; }
         public uint To { get; set; }
-        public IntPtr Size { get; set; }
-        public byte[] ByteContent { get; set; }
+        public byte[] Content { get; set; }
     }
 }
