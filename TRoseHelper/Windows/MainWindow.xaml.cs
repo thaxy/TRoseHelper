@@ -100,9 +100,13 @@ namespace TRoseHelper
                 if (ObjectHandler.Player == null || ObjectHandler.Creeps == null) continue;
                 Creep target = ObjectHandler.GetCreepById(ObjectHandler.Player.TargetId);
                 if (target == null) continue;
-                Application.Current.Dispatcher.Invoke(new Action(() =>  tbTargetInfo.Text = target.ToString() + "\r\n\r\nDistance:\r\n" + target.GetDistance(ObjectHandler.Player)));               
+                Application.Current.Dispatcher.Invoke(new Action(() => tbTargetInfo.Text = target.ToString() + "\r\n\r\nDistance:\r\n" + target.GetDistance()));
             }
             while (true);
+        }
+        private void Attack_Click(object sender, RoutedEventArgs e)
+        {
+            Key.Send(Key.VirtualFKeys.F1);
         }
         private void Settings_Click(object sender, RoutedEventArgs e)
         {

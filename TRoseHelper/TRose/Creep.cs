@@ -12,17 +12,21 @@ namespace TRoseHelper
         public int MaximumHealth { get; set; }
         public float PositionX { get; set; }
         public float PositionY { get; set; }
+        public int LastTargetId { get; set; }
 
-        public double GetDistance(Player player)
+        public double GetDistance()
         {
-            double a = player.PositionX - PositionX;
-            double b = player.PositionY - PositionY;
+            double a = ObjectHandler.Player.PositionX - PositionX;
+            double b = ObjectHandler.Player.PositionY - PositionY;
             return Math.Sqrt((a * a) + (b * b));
         }
 
         public override string ToString()
         {
-            return "Id: " + Id + "\r\nHP: " + Health + "/" + MaximumHealth + "\r\nX: " + PositionX + "\r\nY: " + PositionY;
+            return "Id: " + Id +
+                    "\r\nHP: " + Health + "/" + MaximumHealth +
+                    "\r\nX: " + PositionX +
+                    "\r\nY: " + PositionY;
         }
     }
 }

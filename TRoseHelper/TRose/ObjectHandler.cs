@@ -10,19 +10,14 @@ namespace TRoseHelper
         public static Player Player { get; set; }
         public static List<Creep> Creeps { get; set; }
 
-        /// <summary>
-        /// Update Player
-        /// </summary>
-        /// <returns></returns>
         public static Player UpdatePlayer()
         {
             Player player = new Player();
-
-            player.Health = Convert.ToInt32(MemoryHandler.ReadMemory((IntPtr)0x007C6710, new[] { 0x904 }, typeof(int)));
-            player.ActionId = Convert.ToInt32(MemoryHandler.ReadMemory((IntPtr)0x007C6710, new[] { 0x2e }, typeof(int)));
-            player.TargetId = Convert.ToInt32(MemoryHandler.ReadMemory((IntPtr)0x007A24EC, new[] { 0x14 }, typeof(int)));
-            player.PositionX = Convert.ToSingle(MemoryHandler.ReadMemory((IntPtr)0x002822E8, new[] { 0x9c, 0x180 }, typeof(float), "znzin.dll"));
-            player.PositionY = Convert.ToSingle(MemoryHandler.ReadMemory((IntPtr)0x002822E8, new[] { 0x9c, 0x184 }, typeof(float), "znzin.dll"));
+            player.Health = Convert.ToInt32(MemoryHandler.ReadMemory(AddressList.Player.Health));
+            player.ActionId = Convert.ToInt32(MemoryHandler.ReadMemory(AddressList.Player.Action));
+            player.TargetId = Convert.ToInt32(MemoryHandler.ReadMemory(AddressList.Player.Target));
+            player.PositionX = Convert.ToSingle(MemoryHandler.ReadMemory(AddressList.Player.PositionX));
+            player.PositionY = Convert.ToSingle(MemoryHandler.ReadMemory(AddressList.Player.PositionY));
 
             Player = player;
             return player;
@@ -33,25 +28,28 @@ namespace TRoseHelper
 
             foreach (byte[] memoryRegion in MemoryHandler.ScanMemory(7596148, 200))
             {
-                byte[] mobId = new byte[4];
+                byte[] mobId = new byte[2];
                 byte[] mobHealth = new byte[4];
                 byte[] mobMaximumHealth = new byte[4];
                 byte[] mobPositionX = new byte[4];
                 byte[] mobPositionY = new byte[4];
+                byte[] mobLasttargetId = new byte[2];
 
                 Array.Copy(memoryRegion, 0x18, mobId, 0, 2);
                 Array.Copy(memoryRegion, 0x98, mobHealth, 0, 4);
-                Array.Copy(memoryRegion, 0xA0, mobMaximumHealth, 0, 4);
-                Array.Copy(memoryRegion, 0x80, mobPositionX, 0, 4);
-                Array.Copy(memoryRegion, 0x84, mobPositionY, 0, 4);
+                Array.Copy(memoryRegion, 0xa0, mobMaximumHealth, 0, 4);
+                Array.Copy(memoryRegion, 0x0c, mobPositionX, 0, 4);
+                Array.Copy(memoryRegion, 0x10, mobPositionY, 0, 4);
+                Array.Copy(memoryRegion, 0x54, mobLasttargetId, 0, 2);
 
                 creeps.Add(new Creep
                 {
-                    Id = BitConverter.ToInt32(mobId, 0),
+                    Id = BitConverter.ToInt16(mobId, 0),
                     Health = BitConverter.ToInt32(mobHealth, 0),
                     MaximumHealth = BitConverter.ToInt32(mobMaximumHealth, 0),
                     PositionX = BitConverter.ToSingle(mobPositionX, 0) / 100,
-                    PositionY = BitConverter.ToSingle(mobPositionY, 0) / 100
+                    PositionY = BitConverter.ToSingle(mobPositionY, 0) / 100,
+                    LastTargetId = BitConverter.ToInt16(mobLasttargetId, 0)
                 });
             }
 

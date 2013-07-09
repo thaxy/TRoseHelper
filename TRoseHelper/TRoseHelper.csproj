@@ -73,6 +73,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Interaction\KeyHandling\Key.cs" />
+    <Compile Include="Interaction\MemoryEditing\Address.cs" />
+    <Compile Include="TRose\AddressList.cs" />
     <Compile Include="Windows\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
@@ -102,8 +105,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Memory\MemoryHandler.cs" />
-    <Compile Include="Memory\MemoryPage.cs" />
+    <Compile Include="Interaction\MemoryEditing\MemoryHandler.cs" />
+    <Compile Include="Interaction\MemoryEditing\MemoryPage.cs" />
     <Compile Include="TRose\ObjectHandler.cs" />
     <Compile Include="TRose\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -123,6 +126,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

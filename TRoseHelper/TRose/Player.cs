@@ -14,8 +14,8 @@ namespace TRoseHelper
         public float PositionY { get; set; }
 
         public void SetTarget(int id)
-        {            
-            MemoryHandler.WriteMemory((IntPtr)0x007A24EC, new int[] { 0x14 }, id);            
+        {
+            MemoryHandler.WriteMemory(AddressList.Player.Target, id);
         }
-    }    
+    }
 }

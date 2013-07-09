@@ -1,5 +1,4 @@
-![alt tag](http://s7.directupload.net/images/130705/moo8zvew.jpg)
+TRoseHelper
+===========
 
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/thaxy/TRoseHelper/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
+Memory reading and stuff for the online game rose online
