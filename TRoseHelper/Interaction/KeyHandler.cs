@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices;
+using TRoseHelper.Interaction.MemoryEditing;
 
-namespace TRoseHelper
+namespace TRoseHelper.Interaction
 {
-    public static class Key
+    public class KeyHandler
     {
         [DllImport("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, uint wParam, uint lParam);
+        private static extern int SendMessage(IntPtr hWnd, uint Msg, uint wParam, uint lParam);
 
-        public enum VirtualFKeys
+        public enum VirtualKeys
         {
             F1 = 0x70,
             F2 = 0x71,
@@ -27,7 +25,7 @@ namespace TRoseHelper
             F12 = 0x7B
         }
 
-        public static void Send(VirtualFKeys key)
+        public static void SendKey(VirtualKeys key)
         {
             SendMessage(MemoryHandler.Process.MainWindowHandle, 260, (uint)key, 0);
         }

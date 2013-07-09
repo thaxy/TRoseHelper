@@ -1,23 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using TRoseHelper.Interaction.MemoryEditing;
+using TRoseHelper.TRose.Objects;
 
-namespace TRoseHelper
+namespace TRoseHelper.TRose
 {
-    public static class ObjectHandler
+    public class ObjectHandler
     {
         public static Player Player { get; set; }
         public static List<Creep> Creeps { get; set; }
 
         public static Player UpdatePlayer()
         {
-            Player player = new Player();
-            player.Health = Convert.ToInt32(MemoryHandler.ReadMemory(AddressList.Player.Health));
-            player.ActionId = Convert.ToInt32(MemoryHandler.ReadMemory(AddressList.Player.Action));
-            player.TargetId = Convert.ToInt32(MemoryHandler.ReadMemory(AddressList.Player.Target));
-            player.PositionX = Convert.ToSingle(MemoryHandler.ReadMemory(AddressList.Player.PositionX));
-            player.PositionY = Convert.ToSingle(MemoryHandler.ReadMemory(AddressList.Player.PositionY));
+            Player player = new Player
+            {
+                Health = Convert.ToInt32(MemoryHandler.ReadMemory(Addresses.Player.Health)),
+                ActionId = Convert.ToInt32(MemoryHandler.ReadMemory(Addresses.Player.Action)),
+                TargetId = Convert.ToInt32(MemoryHandler.ReadMemory(Addresses.Player.Target)),
+                PositionX = Convert.ToSingle(MemoryHandler.ReadMemory(Addresses.Player.PositionX)),
+                PositionY = Convert.ToSingle(MemoryHandler.ReadMemory(Addresses.Player.PositionY))
+            };
 
             Player = player;
             return player;

@@ -2,14 +2,11 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TRoseHelper.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="ThreadSleep" Type="System.Int32" Scope="Application">
+    <Setting Name="ThreadSleepInterval" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">50</Value>
     </Setting>
-    <Setting Name="Attack" Type="System.UInt32" Scope="Application">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="Rest" Type="System.UInt32" Scope="Application">
-      <Value Profile="(Default)">0</Value>
+    <Setting Name="ProcessName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">TRose</Value>
     </Setting>
   </Settings>
 </SettingsFile>

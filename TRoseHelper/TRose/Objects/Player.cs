@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using TRoseHelper.Interaction.MemoryEditing;
 
-namespace TRoseHelper
+namespace TRoseHelper.TRose.Objects
 {
     public class Player
     {
@@ -15,7 +12,7 @@ namespace TRoseHelper
 
         public void SetTarget(int id)
         {
-            MemoryHandler.WriteMemory(AddressList.Player.Target, id);
+            MemoryHandler.WriteMemory(Addresses.Player.Target, id);
         }
     }
 }

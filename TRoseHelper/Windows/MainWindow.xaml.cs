@@ -1,28 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Diagnostics;
 using System.Threading;
-using System.Linq.Expressions;
-using System.Collections.ObjectModel;
+using TRoseHelper.Interaction;
+using TRoseHelper.Interaction.MemoryEditing;
+using TRoseHelper.TRose;
+using TRoseHelper.TRose.Objects;
 
-namespace TRoseHelper
+namespace TRoseHelper.Windows
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
+        private static Thread _backgroundThread;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,93 +25,73 @@ namespace TRoseHelper
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Thread backgroundThread = new Thread(new ThreadStart(BackgroundThread));
-            backgroundThread.Start();
-            Thread targetThread = new Thread(new ThreadStart(TargetThread));
-            targetThread.Start();
+            _backgroundThread = new Thread(BackgroundThread);
+            _backgroundThread.Start();
         }
 
         private void BackgroundThread()
         {
-            #region Wait for process
-            Process tRose = null;
             do
             {
-                tRose = Process.GetProcessesByName("TRose").FirstOrDefault();
-                Thread.Sleep(1000);
-            }
-            while (tRose == null);
-            MemoryHandler.Process = tRose;
-            Application.Current.Dispatcher.Invoke(new Action(() => busyIndicator.IsBusy = false));
-            #endregion
+                Thread.Sleep(Properties.Settings.Default.ThreadSleepInterval);
 
-            int tabIndex = -1;
-            do
-            {
-                Thread.Sleep(100);
-                Application.Current.Dispatcher.Invoke(new Action(delegate() { tabIndex = tbCntrl.SelectedIndex; }));
-                if (tabIndex != 1) continue;
-
+                bool isReady = MemoryHandler.IsReady(Properties.Settings.Default.ProcessName);
+                Application.Current.Dispatcher.Invoke(new Action(() => BusyIndicator.IsBusy = !isReady));
+                if (!isReady) continue;
+                
                 ObjectHandler.UpdatePlayer();
                 ObjectHandler.UpdateCreeps();
-                Application.Current.Dispatcher.Invoke(new Action(delegate()
-                {
-                    canvas.Children.Clear();
 
-                    Ellipse ellipse = new Ellipse();
-                    ellipse.Width = 10;
-                    ellipse.Height = 10;
-                    ellipse.Fill = new SolidColorBrush(Colors.Blue);
-                    double centerX = canvas.ActualWidth / 2;
-                    double centerY = canvas.ActualHeight / 2;
+                Creep target = ObjectHandler.GetCreepById(ObjectHandler.Player.TargetId);
+                if (target != null)
+                {
+                    Application.Current.Dispatcher.Invoke(new Action(() => TbTargetInfo.Text = target + "\r\n\r\nDistance:\r\n" + target.GetDistance()));
+                }
+
+                #region Render radar
+                Application.Current.Dispatcher.Invoke(new Action(delegate
+                {
+                    Canvas.Children.Clear();
+
+                    double centerX = Canvas.ActualWidth / 2;
+                    double centerY = Canvas.ActualHeight / 2;
+
+                    Ellipse ellipse = new Ellipse { Width = 10, Height = 10, Fill = new SolidColorBrush(Colors.Blue) };
                     Canvas.SetLeft(ellipse, centerX);
                     Canvas.SetTop(ellipse, centerY);
-                    canvas.Children.Add(ellipse);
+                    Canvas.Children.Add(ellipse);
 
                     foreach (Creep creep in ObjectHandler.Creeps)
                     {
-                        Ellipse creepEllipse = new Ellipse();
-                        creepEllipse.Width = 5;
-                        creepEllipse.Height = 5;
-                        creepEllipse.Fill = new SolidColorBrush(Colors.Red);
+                        Ellipse creepEllipse = new Ellipse { Width = 5, Height = 5, Fill = new SolidColorBrush(Colors.Red) };
                         Canvas.SetLeft(creepEllipse, centerX + creep.PositionX - ObjectHandler.Player.PositionX);
                         Canvas.SetTop(creepEllipse, centerY + ObjectHandler.Player.PositionY - creep.PositionY);
-                        canvas.Children.Add(creepEllipse);
+                        Canvas.Children.Add(creepEllipse);
 
                         if (ObjectHandler.Player.TargetId == creep.Id)
                         {
                             creepEllipse.Fill = new SolidColorBrush(Colors.DarkViolet);
                         }
                     }
+                #endregion
                 }));
             }
             while (true);
         }
-        private void TargetThread()
-        {
-            do
-            {
-                Thread.Sleep(100);
-                if (ObjectHandler.Player == null || ObjectHandler.Creeps == null) continue;
-                Creep target = ObjectHandler.GetCreepById(ObjectHandler.Player.TargetId);
-                if (target == null) continue;
-                Application.Current.Dispatcher.Invoke(new Action(() => tbTargetInfo.Text = target.ToString() + "\r\n\r\nDistance:\r\n" + target.GetDistance()));
-            }
-            while (true);
-        }
-        private void Attack_Click(object sender, RoutedEventArgs e)
-        {
-            Key.Send(Key.VirtualFKeys.F1);
-        }
+
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            Windows.Settings window = new Windows.Settings();
+            Settings window = new Settings();
             window.ShowDialog();
         }
         private void About_Click(object sender, RoutedEventArgs e)
         {
-            Windows.About window = new Windows.About();
+            About window = new About();
             window.ShowDialog();
+        }
+        private void MainWindow_OnClosed(object sender, EventArgs e)
+        {
+            _backgroundThread.Abort();
         }
     }
 }

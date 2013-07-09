@@ -1,12 +1,13 @@
 ﻿<Window x:Class="TRoseHelper.Windows.About"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="About" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="About" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/TRoseHelper;component/Images/Icons/about.ico">
     <Grid>
         <StackPanel Margin="10">
-            <TextBlock Name="tbTitle">~Title</TextBlock>
-            <TextBlock Name="tbDescription">~Description</TextBlock>
-            <TextBlock Name="tbCopyright">~Copyright</TextBlock>
+            <TextBlock Name="TbTitle">~Title</TextBlock>
+            <Separator></Separator>
+            <TextBlock Name="TbDescription">~Description</TextBlock>
+            <TextBlock Name="TbCopyright">~Copyright</TextBlock>
         </StackPanel>
     </Grid>
 </Window>

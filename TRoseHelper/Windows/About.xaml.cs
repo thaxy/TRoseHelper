@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using System.Reflection;
 
 namespace TRoseHelper.Windows
@@ -17,7 +6,7 @@ namespace TRoseHelper.Windows
     /// <summary>
     /// Interaction logic for About.xaml
     /// </summary>
-    public partial class About : Window
+    public partial class About
     {
         public About()
         {
@@ -30,9 +19,9 @@ namespace TRoseHelper.Windows
             AssemblyDescriptionAttribute description = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false)[0] as AssemblyDescriptionAttribute;
             AssemblyCopyrightAttribute copyright = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0] as AssemblyCopyrightAttribute;
 
-            tbTitle.Text = title.Title;
-            tbDescription.Text = description.Description;
-            tbCopyright.Text = copyright.Copyright;
+            if (title != null) TbTitle.Text = title.Title;
+            if (description != null) TbDescription.Text = description.Description;
+            if (copyright != null) TbCopyright.Text = copyright.Copyright;
         }
     }
 }
